@@ -39,7 +39,7 @@ class AbsClass:
 
     def get_errno(self):
         # print(self.__get_errno())
-        return self.g_errno()
+        return self
 
 
 def singleton(cls):
@@ -66,18 +66,18 @@ class GetMessageInfo(object):
         self._list = self._message.split(" ")
 
     @staticmethod
-    def get_message_info(message):
-        if message.startswith('type'):
-            _message = message
-        else:
-            _message = message.split(' ', 1)[1]
-            _message_list = _message.spilt(' ')
-        _message_type = _message_list[0].split('=')[-1]
-        _event_id = _message_list[1].split("(")[1].strip(":").strip(")")
-        if _message_type == "SYSCALL":
-            _syscallnum = _message_list[3].split("=")[-1]
-        else:
-            raise NameError("no syscall attribute")
+    # def get_message_info(message):
+    #     if message.startswith('type'):
+    #         _message = message
+    #     else:
+    #         _message = message.split(' ', 1)[1]
+    #         _message_list = _message.spilt(' ')
+    #     # _message_type = _message_list[0].split('=')[-1]
+    #     # _event_id = _message_list[1].split("(")[1].strip(":").strip(")")
+    #     if _message_type == "SYSCALL":
+    #         _syscallnum = _message_list[3].split("=")[-1]
+    #     else:
+    #         raise NameError("no syscall attribute")
 
     def get_message_type(self):
         # GetMessageInfo._init__(message)
@@ -213,7 +213,7 @@ def process_syscall_close(msg_filter):
 
 
 def process_syscall_rename(msg_filter):
-
+    pass
 
 
 
